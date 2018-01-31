@@ -1,0 +1,11 @@
+//Create component folder
+ng generate component [component name]
+
+//Create service
+ng generate service [service name]
+
+//Create service and  it there automatically by appending to app.module.ts
+ng generate service [service name] --module=app
+
+Referece
+https://www.babelcoder.com/blog/posts/rxjs-observables
