@@ -49,13 +49,11 @@ app.get('/heroes' , (req , res , next) => {
 });
 
 app.post('/hero' , (req, res) => {
-    let newHero = new Hero(req.body);
+    let data = _.pick(req.body , ['no' , 'name']);
+    let newHero = new Hero(data);
     newHero.save()
     .then( (result  ) => {
-        res.status(200).send({
-            status: true ,
-            id : result._id
-        });
+        res.status(200).send(result);
     })
     .catch( (err) => {
         res.status(400).send({
@@ -64,6 +62,70 @@ app.post('/hero' , (req, res) => {
         });
     });
 });
+
+app.get('/hero/:id' , (req, res) => {
+
+    if ( mongoose.Types.ObjectId.isValid(req.params.id) === false ) {
+		res.status(401).send({
+			message : 'ID is invalid'
+		});
+    }
+    
+    Hero.findById(req.params.id)
+    .then( (hero) => {
+        if ( hero === null) {
+            res.status(404).send({
+                message : 'Can not found Hero'
+            });
+            return;
+        }
+        res.status(200).send(hero);
+    })
+    .catch( (err) => {
+        res.status(401).send({
+			message : err
+		});
+    });
+});
+
+app.put('/hero/' , (req , res) => {
+    if ( mongoose.Types.ObjectId.isValid(req.body._id) === false ) {
+		res.status(401).send({
+			message : 'ID is invalid'
+		});
+    }
+    
+    Hero.findByIdAndUpdate(req.body._id  , { $set : req.body} , { new : true} )
+    .then( (data) => {
+        res.status(200).send(data);
+    })
+    .catch( (err) => {
+        res.status(401).send({
+			message : err
+		});
+    });
+});
+
+app.delete('/hero/:id' , (req , res) => {
+  
+    if ( mongoose.Types.ObjectId.isValid(req.params.id) === false ) {
+		res.status(401).send({
+			message : 'ID is invalid'
+		});
+    }
+
+    Hero.findByIdAndRemove(req.params.id)
+    .then((doc) => {
+        res.status(200).send(doc);
+    })
+    .catch( (err) => {
+        res.status(401).send({
+			message : err
+		});
+    });
+});
+
+
 
 
 

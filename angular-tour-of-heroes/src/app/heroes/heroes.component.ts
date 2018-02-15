@@ -3,7 +3,6 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
 
-
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -12,7 +11,7 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[];
-  selectedHero: Hero;
+
 
   constructor(private heroservice: HeroService ) { }
 
@@ -20,10 +19,16 @@ export class HeroesComponent implements OnInit {
     this.heroservice.getHeroes().subscribe(heroes => this.heroes = heroes );
   }
 
-  onSelect(hero: Hero) {
-    this.selectedHero = hero;
+  delete(hero: Hero): void {
+    this.heroservice.deleteHero(hero).subscribe((response) =>{
+      this.heroes = this.heroes.filter( h => h !== hero);
+    });
   }
 
+  onAdded(hero: Hero) : void {
+    this.heroes.push(hero);
+  }
+ 
   ngOnInit() {
     this.getHeroes();
   }
