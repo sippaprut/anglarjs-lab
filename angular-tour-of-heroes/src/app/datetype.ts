@@ -49,7 +49,7 @@ export const dateType: DateType[] = [
         hasDateFrom: true,
         hasDateTo: true,
         start: '',
-        end:''
+        end: moment().format('YYYY-MM-DD')
     },
     {
         name: 'Past Year',

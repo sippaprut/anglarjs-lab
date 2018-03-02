@@ -28,3 +28,23 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Run mongo
 mongod --dbpath [PATH]D:\dev\mongo-data
+
+## Create component folder
+ng generate component [component name]
+
+## Create service in current path folder
+ng generate component [component name] --flat
+
+## Create service
+ng generate service [service name]
+
+## Create service and  it there automatically by appending to app.module.ts
+ng generate service [service name] --module=app
+
+
+
+## Create Route
+ng generate module app-routing --flat --module=app
+
+Referece
+https://www.babelcoder.com/blog/posts/rxjs-observables

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { DaterangepickerConfig } from 'ng2-daterangepicker';
 import * as moment from 'moment';
 
@@ -28,9 +28,7 @@ export class DateSelectComponent implements OnInit {
     return moment(date).format('YYYY-MM-DD');
   }
 
-  ngOnChanges(changes: SimpleChanges) { 
-    console.log(changes);
-  }
+ 
 
   ngOnInit() {
     console.log('ngOnInit dAtepicker' , this.placeholder);

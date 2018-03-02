@@ -6,8 +6,8 @@
 <app-state-options (onSelected)="selected($event)" ></app-state-options>
 {{ selectedState }} <br/>
 
-
-<app-filter-date [placeholder]="'Select a date'"></app-filter-date>
+{{ date | json }}
+<app-filter-date (onSelected)="selectedDate($event)" [placeholder]="'Select a date'"></app-filter-date>
 <!-- 
 <p>
   <button type="button" class="btn btn-outline-primary" (click)="collapsed()"

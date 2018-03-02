@@ -23,6 +23,7 @@ import { HeaderComponent } from './header/header.component';
 import { FilterDateComponent } from './filter-date/filter-date.component';
 import { DateSelectComponent } from './filter-date/date-select/date-select.component';
 import { Daterangepicker } from 'ng2-daterangepicker';
+import { NgxContentLoadingModule } from 'ngx-content-loading';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { Daterangepicker } from 'ng2-daterangepicker';
     AppRoutingModule ,
     HttpClientModule ,
     NgSelectModule,
-    Daterangepicker
+    Daterangepicker,
+    NgxContentLoadingModule
   ],
   providers: [
     HeroService,

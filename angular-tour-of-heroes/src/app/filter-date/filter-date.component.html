@@ -1,4 +1,4 @@
-{{selectedDate |json}}
+
 <div class="dropdown custom-dropdown" [class.show]="isShowDropdown === true" >
     <div class="ng-control" (click)="toggleDropdown($event)">
         <div id="dropdownMenuLink" class="ng-value-container" >
@@ -30,7 +30,6 @@
             [placeholder]="'Date From'" 
             [date]="selectedDate.start"
             [options]="dateFromOptions"
-            
             >
             </app-date-select>
 

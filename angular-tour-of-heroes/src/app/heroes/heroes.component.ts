@@ -20,15 +20,15 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(hero: Hero): void {
-    this.heroservice.deleteHero(hero).subscribe((response) =>{
+    this.heroservice.deleteHero(hero).subscribe((response) => {
       this.heroes = this.heroes.filter( h => h !== hero);
     });
   }
 
-  onAdded(hero: Hero) : void {
+  onAdded(hero: Hero): void {
     this.heroes.push(hero);
   }
- 
+
   ngOnInit() {
     this.getHeroes();
   }

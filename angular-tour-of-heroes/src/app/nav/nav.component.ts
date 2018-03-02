@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { dateType , DateType } from './../datetype';
 
 @Component({
   selector: 'app-nav',
@@ -12,6 +12,8 @@ export class NavComponent implements OnInit {
 
   selectedState: any;
 
+  date: DateType;
+
   constructor() { }
 
   collapsed() : boolean {
@@ -23,6 +25,10 @@ export class NavComponent implements OnInit {
 
   selected(value: any) : void {
     this.selectedState = value;
+  }
+
+  selectedDate(value: DateType): void {
+    this.date = value;
   }
 
 }
