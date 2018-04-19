@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -24,6 +24,9 @@ import { FilterDateComponent } from './filter-date/filter-date.component';
 import { DateSelectComponent } from './filter-date/date-select/date-select.component';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
+import { DateOptionsComponent } from './date-options/date-options.component';
+import { DataOptionsService } from './data-options.service';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -38,7 +41,8 @@ import { NgxContentLoadingModule } from 'ngx-content-loading';
     StateOptionsComponent,
     HeaderComponent,
     FilterDateComponent,
-    DateSelectComponent
+    DateSelectComponent,
+    DateOptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { NgxContentLoadingModule } from 'ngx-content-loading';
   ],
   providers: [
     HeroService,
-    MessageService
+    MessageService,
+    DataOptionsService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

@@ -12,7 +12,11 @@ export class HeroFormComponent implements OnInit {
 
   @Output() onAdded = new EventEmitter<Hero>();
 
-  hero : Hero ;
+  hero: Hero ;
+
+  dateOption = {
+    minDate: { year: 2018 , month: 4, day: 12}
+  };
 
   constructor( private heroservice: HeroService ) { }
 
@@ -20,7 +24,7 @@ export class HeroFormComponent implements OnInit {
     this.reset();
   }
 
-  save() : void {
+  save(): void {
     this.heroservice.addHero(this.hero).subscribe(hero => {
         this.onAdded.emit(hero);
         this.reset();

@@ -1,0 +1,65 @@
+<div class="dropdown custom-dropdown" [class.show]="isShowDropdown === true" >
+  <div class="ng-control" (click)="toggleDropdown($event)">
+      <div id="dropdownMenuLink" class="ng-value-container" >
+          <div class="ng-input" >
+              <div class="ng-input-value" 
+              *ngIf="isShowDropdown === false"
+              [ngClass]="{ 'ng-input-active': showLabelOption()  }">{{ showLabelOption() || placeholder  }}
+              </div>
+
+              <input  class="ng-input-search" #inputSearch type="text" value=""
+              *ngIf="isShowDropdown === true"
+               (keyup)="searchItem($event.target.value)">
+               
+          </div>
+          <span class="ng-arrow-zone">
+              <span class="ng-arrow"></span>
+          </span>
+      </div><!--End dropdownMenuLink-->
+  </div><!--End ng-control-->
+
+  <div class="ng-dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <div class="ng-select-dropdown">
+            <div class="ng-options" *ngFor="let option of options" (click)="selectOption(option)" [class.active]="selectedDate.name === option.name">
+                <span class="ng-option-label">{{ option.name }}</span>
+            </div>
+        </div><!-- End ng-select-dropdown-->   
+        
+  
+        <div class="ng-select-daterage row" *ngIf="isCustomDate()"  >
+            <div class="col-md-6 col-12">
+              <input class="form-control" placeholder="Select a Date" name="dpstart" readonly
+              ngbDatepicker 
+              [placement]="'top-left'"
+              #start="ngbDatepicker" 
+              [(ngModel)]="dateStart"
+              [maxDate]="dateEnd"
+              (dateSelect)="selectedFrom($event)"
+              (click)="start.toggle()">
+            </div>
+       
+
+            <div class="col-md-6 col-12" *ngIf="selectedDate.hasDateTo">
+              <input class="form-control" placeholder="Select a Date" name="dpEnd" readonly
+                ngbDatepicker 
+                [placement]="'top-left'"
+                #end="ngbDatepicker" 
+                [(ngModel)]="dateEnd"
+                (click)="end.toggle()"
+                (dateSelect)="selectedTo($event)"
+                [minDate]="dateStart"
+              >
+
+                <!-- <app-datepicker
+                    *ngIf="selectedDate.hasDateTo"
+                    (onSelected)="afterSelectedToCustomDate($event)" 
+                    [placeholder]="'Date To'" 
+                    [date]="selectedDate.end"
+                    [options]="dateToOptions">
+                </app-datepicker> -->
+            </div>
+        </div>
+  </div><!-- End dropdown-menu-->
+</div><!--End custom-dropdown-->
+
+{{  selectedDate | json }}
